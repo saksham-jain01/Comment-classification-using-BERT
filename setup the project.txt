@@ -1,0 +1,52 @@
+Installation and Setup (Ubuntu):-
+
+TensorFlow Installation
+------------------------
+1. Install python dev environment on the system
+	$ sudo apt update
+	$ sudo apt install python3-dev python3-pip
+	$ sudo pip3 install -U virtualenv  # system-wide install
+
+2. (Not necessary) Create virtual environment to isolate package installation from the system
+- Create a new virtual environment by choosing a Python interpreter and making a ./venv directory to hold it:
+	$ virtualenv --system-site-packages -p python3 ./venv
+- When virtualenv is active, your shell prompt is prefixed with (venv). Install packages within a virtual environment without affecting the host system setup. Start by upgrading pip:
+	$ pip install --upgrade pip
+	$ pip list  # show packages installed within the virtual environment
+- And to exit virtualenv later:
+	$ deactivate  # don't exit until you're done using TensorFlow
+
+3. (Can be done either in root or in virtual env) Install the TensorFlow pip package
+- Virtualenv install  # after activating /venv
+	$ pip install --upgrade tensorflow
+- Verify the install
+	$ python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
+Install and update git, wget, and unzip if not already present
+----------------------
+	$ sudo apt-get update
+	$ sudo apt-get install git -y
+	$ sudo apt-get install wget
+	$ sudo apt-get install unzip
+
+Setup the work directory
+------------------------
+1. Change directory to where you want to download
+	$ cd work/directory
+
+2. Download BERT
+	$ git clone https://github.com/google-research/bert.git
+
+3. Download and extract pre-trained vocab and model files
+	$ wget https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip
+	$ unzip cased_L-12_H-768_A-12.zip
+	$ rm cased_L-12_H-768_A-12.zip
+
+4. Download Flask API
+	$ git clone https://github.com/pallets/flask.git
+
+5. Download python files required for running text classification and inference
+	$ git clone https://github.com/saksham-jain01/Comment-classification-using-BERT.git
+
+6. Make the dataset directory inside the work directory
+	$ sudo mkdir dataset #this is after cd work/directory

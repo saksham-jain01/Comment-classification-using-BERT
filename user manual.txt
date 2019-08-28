@@ -1,0 +1,33 @@
+User Manual (Ubuntu):-
+
+First, setup the system using the installation manual.
+Your work directory should look like this:
+
+- bert
+- bert_output # will appear after training the model
+- cased_L-12_H-768_A-12
+- dataset
+- flask
+- get-train.py
+- infer-from-json.py
+- prediction.py
+- request.py
+- run-to-train.py
+
+1. In the "dataset" directory, save the comments and their associated numeric labels (0 for negative, 1 for positive, 2 for neutral) as 'combinedaug.csv' with two columns only, i.e. 'comment' and 'label'. There should not be an index.
+
+2. Activate the virtual environment (/venv) if you chose to install tensorflow in it. 
+
+3. Change to the work directory 
+
+4. Run get-train.py to get training dataset in the form usable by BERT
+
+5. Run run-to-train.py to train the model on the training data
+
+6. Modify infer-from-json.py with the server address to which the post requests will be made.
+
+7. After training, run infer-from-json.py
+
+8. Make post request with the comment to be classified.
+
+IMPORTANT: Make sure that that the json post request is of the format json={"text": "the comment here",}
